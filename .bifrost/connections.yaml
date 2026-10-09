@@ -1,0 +1,14 @@
+connections:
+  HaloPSA:
+    integration_name: HaloPSA
+    template:
+      config_schema:
+        - key: base_url
+          type: string
+          required: true
+          description: Halo API resource base URL, including /api (for example, https://your-tenant.halopsa.com/api).
+      oauth:
+        provider_name: HaloPSA
+        display_name: HaloPSA
+        oauth_flow_type: authorization_code
+    position: 0

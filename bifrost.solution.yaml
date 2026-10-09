@@ -1,0 +1,5 @@
+slug: halo-dispatch-portal
+name: Halo Dispatch Portal
+version: 0.1.2
+allow_outbound_access: false
+allow_inbound_access: true

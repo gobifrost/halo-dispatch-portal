@@ -1,0 +1,15 @@
+events:
+  f0161059-9f7a-4d0b-9280-eaaac50cb174:
+    id: f0161059-9f7a-4d0b-9280-eaaac50cb174
+    name: Halo Dispatch daily cache refresh
+    source_type: schedule
+    is_active: true
+    cron_expression: "17 3 * * *"
+    timezone: America/New_York
+    schedule_enabled: true
+    overlap_policy: skip
+    subscriptions:
+      - id: 2cc22cad-3721-4ffd-aa50-c5fd49c5b606
+        target_type: workflow
+        workflow_id: 461095e0-ec03-431a-90bb-497be375cc9d
+        is_active: true

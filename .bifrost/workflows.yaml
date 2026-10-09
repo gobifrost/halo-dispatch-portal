@@ -1,0 +1,82 @@
+workflows:
+  461095e0-ec03-431a-90bb-497be375cc9d:
+    id: 461095e0-ec03-431a-90bb-497be375cc9d
+    name: halo_dispatch_refresh_cache
+    path: functions/halo_dispatch.py
+    function_name: refresh_cache
+    category: Halo Dispatch Portal
+    access_level: role_based
+    role_names: &dispatch_roles
+      - PSA Users
+  3118a9e0-5e49-4aef-9c38-a69b264464f7:
+    id: 3118a9e0-5e49-4aef-9c38-a69b264464f7
+    name: halo_dispatch_environment
+    path: functions/halo_dispatch.py
+    function_name: environment
+    category: Halo Dispatch Portal
+    access_level: role_based
+    role_names: *dispatch_roles
+  ececb6d9-7dd2-4f38-95eb-d3b5b402525d:
+    id: ececb6d9-7dd2-4f38-95eb-d3b5b402525d
+    name: halo_dispatch_list_tickets
+    path: functions/halo_dispatch.py
+    function_name: list_tickets
+    category: Halo Dispatch Portal
+    access_level: role_based
+    role_names: *dispatch_roles
+  4c0157db-2cfb-464c-9de5-c8636b5bff23:
+    id: 4c0157db-2cfb-464c-9de5-c8636b5bff23
+    name: halo_dispatch_list_appointments
+    path: functions/halo_dispatch.py
+    function_name: list_appointments
+    category: Halo Dispatch Portal
+    access_level: role_based
+    role_names: *dispatch_roles
+  3e5e1885-39e3-446e-be03-6303b3d139be:
+    id: 3e5e1885-39e3-446e-be03-6303b3d139be
+    name: halo_dispatch_search_users
+    path: functions/halo_dispatch.py
+    function_name: search_users
+    category: Halo Dispatch Portal
+    access_level: role_based
+    role_names: *dispatch_roles
+  be6e8459-b335-431d-a889-2cc90d9c9a63:
+    id: be6e8459-b335-431d-a889-2cc90d9c9a63
+    name: halo_dispatch_search_sites
+    path: functions/halo_dispatch.py
+    function_name: search_sites
+    category: Halo Dispatch Portal
+    access_level: role_based
+    role_names: *dispatch_roles
+  f90ec51d-bec3-4e37-b68f-366cb17a3767:
+    id: f90ec51d-bec3-4e37-b68f-366cb17a3767
+    name: halo_dispatch_search_companies
+    path: functions/halo_dispatch.py
+    function_name: search_companies
+    category: Halo Dispatch Portal
+    access_level: role_based
+    role_names: *dispatch_roles
+  9e700135-0e01-4993-8241-a94e0edd54bf:
+    id: 9e700135-0e01-4993-8241-a94e0edd54bf
+    name: halo_dispatch_save_ticket
+    path: functions/halo_dispatch.py
+    function_name: save_ticket
+    category: Halo Dispatch Portal
+    access_level: role_based
+    role_names: *dispatch_roles
+  88ed59a8-724d-43a2-b751-6d2421bb8cb4:
+    id: 88ed59a8-724d-43a2-b751-6d2421bb8cb4
+    name: halo_dispatch_save_appointment
+    path: functions/halo_dispatch.py
+    function_name: save_appointment
+    category: Halo Dispatch Portal
+    access_level: role_based
+    role_names: *dispatch_roles
+  7eb7e891-5a23-4fdc-834f-589e525d6c79:
+    id: 7eb7e891-5a23-4fdc-834f-589e525d6c79
+    name: halo_dispatch_remove_appointment
+    path: functions/halo_dispatch.py
+    function_name: remove_appointment
+    category: Halo Dispatch Portal
+    access_level: role_based
+    role_names: *dispatch_roles

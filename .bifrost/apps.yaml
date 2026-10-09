@@ -1,0 +1,10 @@
+apps:
+  56a1e9d9-5227-4f09-a0da-98f0e2abb050:
+    id: 56a1e9d9-5227-4f09-a0da-98f0e2abb050
+    slug: halo-dispatch-portal
+    name: Halo Dispatch Portal
+    path: apps/halo-dispatch-portal
+    app_model: standalone_v2
+    access_level: role_based
+    role_names:
+      - PSA Users

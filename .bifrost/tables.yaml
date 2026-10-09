@@ -1,0 +1,149 @@
+_anchors:
+  policies:
+    - &admin_bypass
+      name: admin_bypass
+      description: Platform admins may maintain Halo Dispatch Portal cache rows.
+      actions: [read, create, update, delete]
+      when: {user: is_platform_admin}
+    - &dispatch_access
+      name: halo_dispatch_psa_users
+      description: PSA Users may read and refresh Halo Dispatch Portal caches.
+      actions: [read, create, update, delete]
+      when: {call: has_role, args: ["PSA Users"]}
+
+tables:
+  3d20900e-8a79-4960-a1bc-c50c3e6461c3:
+    id: 3d20900e-8a79-4960-a1bc-c50c3e6461c3
+    name: halo_dispatch_agents
+    description: Cached Halo agents; email_lower maps a Bifrost caller to their Halo agent identity.
+    schema:
+      columns:
+        - {name: id, type: int}
+        - {name: name, type: string}
+        - {name: email, type: string}
+        - {name: email_lower, type: string}
+        - {name: team, type: string}
+        - {name: initials, type: string}
+        - {name: jobtitle, type: string}
+        - {name: colour, type: string}
+        - {name: agentphotopath, type: string}
+        - {name: isdisabled, type: bool}
+        - {name: isapiagent, type: bool}
+    policies: [*admin_bypass, *dispatch_access]
+
+  ad0b8658-9506-4d28-bef9-355c726c8634:
+    id: ad0b8658-9506-4d28-bef9-355c726c8634
+    name: halo_dispatch_teams
+    description: Cached active Halo teams that handle service requests.
+    schema:
+      columns:
+        - {name: id, type: int}
+        - {name: name, type: string}
+        - {name: sequence, type: int}
+        - {name: forrequests, type: bool}
+        - {name: inactive, type: bool}
+    policies: [*admin_bypass, *dispatch_access]
+
+  52da3b69-57e7-4ea9-b6bf-9d19e81c884c:
+    id: 52da3b69-57e7-4ea9-b6bf-9d19e81c884c
+    name: halo_dispatch_ticket_areas
+    description: Cached Halo ticket areas used to select the dispatch queue family.
+    schema:
+      columns:
+        - {name: id, type: int}
+        - {name: guid, type: string}
+        - {name: name, type: string}
+        - {name: sequence, type: int}
+        - {name: default_filter_id, type: int}
+        - {name: default_view_selectedid, type: int}
+        - {name: default_columns_id, type: int}
+    policies: [*admin_bypass, *dispatch_access]
+
+  c9e3edee-f46c-4bea-b252-02b29b4c3cd9:
+    id: c9e3edee-f46c-4bea-b252-02b29b4c3cd9
+    name: halo_dispatch_ticket_types
+    description: Cached Halo ticket types used for ticket labels and triage.
+    schema:
+      columns:
+        - {name: id, type: int}
+        - {name: guid, type: string}
+        - {name: name, type: string}
+        - {name: use, type: string}
+        - {name: sequence, type: int}
+        - {name: cancreate, type: bool}
+        - {name: visible, type: bool}
+    policies: [*admin_bypass, *dispatch_access]
+
+  29169208-9b55-496c-a275-ca1ad4b9610b:
+    id: 29169208-9b55-496c-a275-ca1ad4b9610b
+    name: halo_dispatch_statuses
+    description: Cached Halo ticket statuses used to enrich live tickets.
+    schema:
+      columns:
+        - {name: id, type: int}
+        - {name: guid, type: string}
+        - {name: name, type: string}
+        - {name: shortname, type: string}
+        - {name: type, type: int}
+        - {name: sequence, type: int}
+        - {name: colour, type: string}
+    policies: [*admin_bypass, *dispatch_access]
+
+  87c1d272-6bc5-4bad-b27f-99eab27041e3:
+    id: 87c1d272-6bc5-4bad-b27f-99eab27041e3
+    name: halo_dispatch_view_lists
+    description: Cached Halo dispatch view lists, keyed by ticket area and Halo list ID.
+    schema:
+      columns:
+        - {name: id, type: int}
+        - {name: ticket_area_id, type: int}
+        - {name: guid, type: string}
+        - {name: name, type: string}
+        - {name: sequence, type: int}
+        - {name: group, type: int}
+        - {name: group_name, type: string}
+        - {name: group_seq, type: int}
+        - {name: column_profile_id, type: int}
+        - {name: filter_profile_id, type: int}
+        - {name: ticket_count, type: int}
+    policies: [*admin_bypass, *dispatch_access]
+
+  551cc894-da7e-4164-8000-e370474e9708:
+    id: 551cc894-da7e-4164-8000-e370474e9708
+    name: halo_dispatch_categories
+    description: Cached global Halo service categories used by triage.
+    schema:
+      columns:
+        - {name: id, type: int}
+        - {name: value, type: string}
+        - {name: category_name, type: string}
+        - {name: note, type: string}
+    policies: [*admin_bypass, *dispatch_access]
+
+  7a3fa091-685b-45ca-a8f6-80380229c5bf:
+    id: 7a3fa091-685b-45ca-a8f6-80380229c5bf
+    name: halo_dispatch_appointment_types
+    description: Cached Halo appointment type lookup values.
+    schema:
+      columns:
+        - {name: id, type: int}
+        - {name: lookupid, type: int}
+        - {name: name, type: string}
+        - {name: value2, type: string}
+        - {name: value3_bool, type: bool}
+        - {name: value4_bool, type: bool}
+        - {name: value5_bool, type: bool}
+        - {name: value8, type: string}
+    policies: [*admin_bypass, *dispatch_access]
+
+  fd6ca9bc-2ba9-497e-9ce6-9d6980e22572:
+    id: fd6ca9bc-2ba9-497e-9ce6-9d6980e22572
+    name: halo_dispatch_cache_state
+    description: Last refresh timestamp and health for each Halo reference-cache type.
+    schema:
+      columns:
+        - {name: cache_type, type: string}
+        - {name: refreshed_at, type: datetime}
+        - {name: record_count, type: int}
+        - {name: status, type: string}
+    policies: [*admin_bypass, *dispatch_access]
