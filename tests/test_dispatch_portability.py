@@ -54,3 +54,5 @@ def test_readme_installs_the_maintained_solution_repository():
         "https://github.com/gobifrost/halo-dispatch-portal"
     ) in readme
     assert "https://github.com/jackmusick/HaloDispatchPortal" not in readme
+    assert "global Solution install" in readme
+    assert "global HaloPSA connection" in readme

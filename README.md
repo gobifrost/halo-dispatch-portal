@@ -37,6 +37,10 @@ one access boundary.
 Solution Setup declares a required **HaloPSA** connection. Configure the shared
 integration in the platform with:
 
+For a global Solution install, configure a global HaloPSA connection. The daily
+cache refresh runs in that global default context, so an organization-only
+connection is not available to it.
+
 - `base_url`: the Halo API resource base, including `/api`, such as
   `https://your-tenant.halopsa.com/api`.
 - OAuth: configure the Halo authorization-code client and complete the platform
