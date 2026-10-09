@@ -23,6 +23,10 @@ Users** role. This is an access role for people who should use the portal; it is
 not a HaloPSA user type. Assign it to the intended Bifrost people, then refresh
 the cache so each caller can be matched to a Halo agent by email.
 
+Halo API operations use the configured server OAuth identity. People granted
+this role share that connection's Halo permissions; matching their Bifrost email
+selects their Halo agent identity.
+
 If you rename or replace this role, update the app entry in
 `.bifrost/apps.yaml`, every workflow entry in `.bifrost/workflows.yaml`, and the
 cache-table policies in `.bifrost/tables.yaml` together. Those declarations form
