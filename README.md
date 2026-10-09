@@ -9,7 +9,7 @@ OAuth credentials and API traffic stay on the server.
 Install the repository with a Bifrost CLI matched to your platform instance:
 
 ```bash
-bifrost solution install-repo https://github.com/jackmusick/HaloDispatchPortal
+bifrost solution install-repo https://github.com/gobifrost/halo-dispatch-portal
 ```
 
 Repository installs are Git-connected. Use the platform Solution Git lifecycle to
