@@ -43,3 +43,14 @@ def test_solution_access_and_event_dependencies_are_closed():
         policies = table["policies"]
         assert any(policy["name"] == "halo_dispatch_psa_users" for policy in policies)
     assert event["subscriptions"][0]["workflow_id"] in workflows
+
+
+def test_readme_installs_the_maintained_solution_repository():
+    root = Path(__file__).resolve().parents[1]
+    readme = (root / "README.md").read_text()
+
+    assert (
+        "bifrost solution install-repo "
+        "https://github.com/gobifrost/halo-dispatch-portal"
+    ) in readme
+    assert "https://github.com/jackmusick/HaloDispatchPortal" not in readme
